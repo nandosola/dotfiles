@@ -1,1 +1,3 @@
-../.gemrc
+---
+:verbose: true
+gem: --no-ri --no-rdoc
