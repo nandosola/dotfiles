@@ -1,0 +1,52 @@
+[user]
+  name = Nando Sola
+  email = nando@robotchrist.com
+
+[core]
+  excludesfile = /home/nando/.gitignore_global
+  precomposeunicode = true
+  autocrlf = input
+
+[merge]
+  tool = meld
+[mergetool "meld"]
+  cmd = meld "$BASE $LOCAL $REMOTE $MERGED"
+  trustExitCode = false
+
+[diff]
+  tool = meld
+[difftool "meld"]
+  cmd = meld "$LOCAL $REMOTE"
+
+[alias]
+  serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+  # git clone git://<IP>/.git <proj>
+  ci = commit
+  co = checkout
+  st = status
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  out = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  rollback = reset --soft HEAD^
+  branches = branch -vv --color=always
+  upstream =  branch --set-upstream-to
+  webui = !/Users/nando/.git-webui/release/libexec/git-core/git-webui
+  rbu = "!f(){ git pull --all && git rebase unstable; };f"
+  unstash = stash pop
+  unbotch = clean -d -f -x -e ".idea"
+
+[push]
+  default = simple
+
+[receive]
+  fsckObjects = true
+  protectHFS = true
+  protectNTFS = true
+
+[webui]
+  autoupdate = true
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+

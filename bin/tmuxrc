@@ -1,0 +1,33 @@
+#!/bin/sh
+tmux="/usr/bin/tmux -u -f /home/nando/.tmux.conf"
+workdir="$HOME/d"
+gdb="$workdir/graphenedb"
+playground="$workdir/playground"
+
+$tmux has-session -t devordie
+
+if [ $? != 0 ]; then
+  $tmux start-server
+  $tmux new-session -d -s devordie -n 'Playground'
+  $tmux split-window -h -t 'Playground' 'htop'
+  $tmux selectp -t devordie:0.0
+  $tmux splitw -v -p 50
+  $tmux selectp -t devordie:0.2
+  $tmux splitw -v -p 50
+  $tmux send-keys -t devordie:0.0 "cd $playground" C-m
+  $tmux send-keys -t devordie:0.3 "ovpn-gdb" C-m
+  $tmux send-keys -t devordie:0.1 "amm" C-m
+
+  $tmux new-window -t devordie:1 -n 'GDB'
+  $tmux split-window -h -t 'GDB'
+  $tmux split-window -v -t 'GDB'
+  $tmux send-keys -t devordie:1.0 "cd $gdb" C-m
+  $tmux send-keys -t devordie:1.2 "cd $gdb" C-m
+
+  $tmux new-window -t devordie:2 -n 'Stuff'
+  $tmux split-window -h -t 'Stuff'
+
+  $tmux select-window -t devordie:0
+fi
+
+$tmux -2 attach-session -t devordie
