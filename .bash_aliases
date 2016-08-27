@@ -7,6 +7,7 @@ alias rbenv_update="(echo ***ruby-build; cd ~/.rbenv/plugins/ruby-build && git p
 alias CA="/usr/lib/ssl/misc/CA.pl"
 
 alias myrepo='function _myrepo(){ apt-cache policy $1; }; _myrepo'
+alias afk='xscreensaver-command --lock'
 
 alias dock_stop_all="docker stop \`docker ps -a -q\`"
 alias dock_rmc_all="docker rm \`docker ps -a -q\`"
@@ -16,8 +17,8 @@ alias dock_rmbad="docker images | awk '/^<none>/{print \$3}' | xargs docker rmi"
 alias meteo="curl -4 http://wttr.in/Malaga"
 alias icanhazip="curl -4 http://icanhazip.com"
 
-alias gt="~/.rbenv/shims/gt.rb"
 alias jrepl="java -jar ~/bin/javarepl.jar"
 alias ag='ag --path-to-agignore ~/.agignore'
 
 alias ovpn-gdb="sudo /usr/sbin/openvpn --config ~/.certs/us-east-1-openvpn.conf"
+alias gt="~/.rbenv/shims/gt.rb"
