@@ -128,6 +128,7 @@ export MAVEN_OPTS="-Xmx512m"
 export RACK_ENV=development
 
 export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/local/heroku/bin:$PATH"
+export MANPATH="$HOME/tools/lua-5.3/man:$HOME/tools/rust-1.11.0/share/man:$MANPATH"
 
 # Colorize Maven Output
 # Colors reference: http://en.wikipedia.org/wiki/ANSI_escape_code
@@ -142,7 +143,6 @@ color_maven() {
     -e 's/\(Downloaded:.*\)/^[[32;1m\1^[[0m/g'
 }
 alias mvn=color_maven
-
 
 source ~/.bash-git-prompt/gitprompt.sh
 GIT_PROMPT_ONLY_IN_REPO=1
