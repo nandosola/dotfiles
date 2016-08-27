@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/gnome-terminal --maximize --command /home/nando/bin/tmuxrc
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Gnome Terminal
+Name=Gnome Terminal
+Comment[en_US]=
+Comment=
