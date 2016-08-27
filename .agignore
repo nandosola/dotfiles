@@ -1,6 +1,7 @@
 *.pyc
 *.class
 .git/
-logs/
-log/
 *.log
+/logs/
+/log/
+/target/
