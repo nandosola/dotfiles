@@ -5,3 +5,5 @@
 /logs/
 /log/
 /target/
+*.min.js
+*.min.css
