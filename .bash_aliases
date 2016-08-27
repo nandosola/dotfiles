@@ -18,5 +18,6 @@ alias icanhazip="curl -4 http://icanhazip.com"
 
 alias gt="~/.rbenv/shims/gt.rb"
 alias jrepl="java -jar ~/bin/javarepl.jar"
+alias ag='ag --path-to-agignore ~/.agignore'
 
 alias ovpn-gdb="sudo /usr/sbin/openvpn --config ~/.certs/us-east-1-openvpn.conf"

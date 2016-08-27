@@ -1,0 +1,6 @@
+*.pyc
+*.class
+.git/
+logs/
+log/
+*.log
