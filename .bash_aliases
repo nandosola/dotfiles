@@ -19,6 +19,10 @@ alias icanhazip="curl -4 http://icanhazip.com"
 
 alias jrepl="java -jar ~/bin/javarepl.jar"
 alias ag='ag --path-to-agignore ~/.agignore'
+alias visualvm="$JAVA_HOME/bin/jvisualvm"
+alias missioncontrol="$JAVA_HOME/bin/jmc"
 
 alias ovpn-gdb="sudo /usr/sbin/openvpn --config ~/.certs/us-east-1-openvpn.conf"
 alias gt="~/.rbenv/shims/gt.rb"
+
+alias nmr="sudo service network-manager restart"
