@@ -17,6 +17,7 @@ if [ $? != 0 ]; then
   $tmux send-keys -t devordie:0.0 "cd $playground" C-m
   $tmux send-keys -t devordie:0.3 "ovpn-gdb" C-m
   $tmux send-keys -t devordie:0.1 "amm" C-m
+  $tmux send-keys -t devordie:0.0 "fortune -a" C-m
 
   $tmux new-window -t devordie:1 -n 'GDB'
   $tmux split-window -h -t 'GDB'
