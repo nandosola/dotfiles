@@ -20,7 +20,6 @@
 
 [alias]
   serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
-  # git clone git://<IP>/.git <proj>
   ci = commit
   co = checkout
   st = status
@@ -33,6 +32,7 @@
   rbu = "!f(){ git pull --all && git rebase unstable; };f"
   unstash = stash pop
   unbotch = clean -d -f -x -e ".idea"
+  clone-gdb = "!f() { dst=`echo ${1%.git} | cut -d/ -f2`; repo=`echo $1 | awk -F: '{print $1\"-gdb:\"$2}'`; git clone $repo && (cd $dst && git config user.email nando@graphenedb.com && git config commit.gpgSign true);}; f"
 
 [push]
   default = simple
