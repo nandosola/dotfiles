@@ -29,7 +29,7 @@
   rollback = reset --soft HEAD^
   branches = branch -vv --color=always
   upstream =  branch --set-upstream-to
-  webui = !/Users/nando/.git-webui/release/libexec/git-core/git-webui
+  webui = !/home/nando/.git-webui/release/libexec/git-core/git-webui
   rbu = "!f(){ git pull --all && git rebase unstable; };f"
   unstash = stash pop
   unbotch = clean -d -f -x -e ".idea"
