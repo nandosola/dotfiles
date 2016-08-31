@@ -26,3 +26,4 @@ alias ovpn-gdb="sudo /usr/sbin/openvpn --config ~/.certs/us-east-1-openvpn.conf"
 alias gt="~/.rbenv/shims/gt.rb"
 
 alias nmr="sudo service network-manager restart"
+alias tor-browser="(cd ~/tools/tor-browser_en-US && ./start-tor-browser.desktop)"
