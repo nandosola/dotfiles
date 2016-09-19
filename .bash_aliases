@@ -14,6 +14,8 @@ alias dock_rmc_all="docker rm \`docker ps -a -q\`"
 alias dock_rmi_all="docker rmi \`docker images -q\`"
 alias dock_rmbad="docker images | awk '/^<none>/{print \$3}' | xargs docker rmi"
 
+alias dock_login_gdb="`aws --profile gdb ecr get-login --region us-east-1`"
+
 alias meteo="curl -4 http://wttr.in/Malaga"
 alias icanhazip="curl -4 http://icanhazip.com"
 
