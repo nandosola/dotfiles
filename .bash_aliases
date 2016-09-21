@@ -57,7 +57,9 @@ alias cpuinfo='lscpu'
 ## get GPU ram on desktop / laptop## 
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
-alias rbenv_update="(echo ***ruby-build; cd ~/.rbenv/plugins/ruby-build && git pull) && (echo ***rbenv; cd ~/.rbenv && /usr/bin/git pull) && (echo ***rbenv-vars; cd ~/.rbenv/plugins/rbenv-vars && /usr/bin/git pull)"
+alias rbenv_update='(echo ***ruby-build; cd ~/.rbenv/plugins/ruby-build && git pull) && (echo ***rbenv; cd ~/.rbenv && /usr/bin/git pull) && (echo ***rbenv-vars; cd ~/.rbenv/plugins/rbenv-vars && /usr/bin/git pull)'
+
+alias vim_update='(cd ~/.vim/bundle; for d in `ls -1`; do (echo "***$d"; cd $d; if [ -d .git ]; then git pull; fi); done)'
 
 alias CA="/usr/lib/ssl/misc/CA.pl"
 
