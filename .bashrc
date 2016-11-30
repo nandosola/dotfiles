@@ -121,13 +121,18 @@ export OJDK9_HOME=/usr/lib/jvm/java-9-openjdk-amd64
 export OJDK8_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export ORCL8_HOME=/usr/lib/jvm/java-8-oracle
 export JAVA_HOME=$ORCL8_HOME
+export GOROOT=$HOME/tools/go
+export GOPATH=$HOME/.golibs
+
+export CONSCRIPT_HOME="$HOME/.conscript"
+export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
 
 export M2_HOME=$HOME/tools/apache-maven-3
 export MAVEN_OPTS="-Xmx512m"
 
 export RACK_ENV=development
 
-export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/local/heroku/bin:$GOROOT/bin:$GOPATH/bin:$CONSCRIPT_HOME/bin:$PATH:"
 export MANPATH="$HOME/tools/lua-5.3/man:$HOME/tools/rust-1.11.0/share/man:$MANPATH"
 
 # Colorize Maven Output
@@ -148,3 +153,4 @@ source ~/.bash-git-prompt/gitprompt.sh
 GIT_PROMPT_ONLY_IN_REPO=1
 
 eval "$(rbenv init -)"
+PATH="/home/nando/.conscript/bin:$PATH"

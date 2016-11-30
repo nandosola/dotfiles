@@ -4,7 +4,7 @@ alias rmspecial='function _rmspecial(){ find ~/ -mount -inum $1 -exec rm -i {} \
 
 alias diff='colordiff'
 alias mount='mount |column -t'
-alias tstamp='date +"%Y%m%d%H%M%S"'
+alias tstamp='date -u +"%Y%m%d%H%M%S"'
 alias ports='netstat -tulanp'
 alias top='htop'
 
@@ -71,7 +71,7 @@ alias dock_rmc_all="docker rm \`docker ps -a -q\`"
 alias dock_rmi_all="docker rmi \`docker images -q\`"
 alias dock_rmbad="docker images | awk '/^<none>/{print \$3}' | xargs docker rmi"
 
-alias dock_login_gdb="`aws --profile gdb ecr get-login --region us-east-1`"
+alias dock_login_gdb="aws --profile gdb-us1 ecr get-login --region us-east-1"
 
 alias meteo="curl -4 http://wttr.in/Malaga"
 alias icanhazip="curl -4 http://icanhazip.com"
