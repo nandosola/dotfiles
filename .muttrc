@@ -1,0 +1,66 @@
+#### GMail ####
+source ~/.mutt/auth.rc
+
+set from = "nando@graphenedb.com"
+set realname = "Nando Sola"
+set use_from = yes
+set envelope_from = yes
+
+# Ensure TLS is enforced
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+# Protocol: smtp for TLS (587), smtps for SSL (465)
+set smtp_url = "smtp://nando@graphenedb.com@smtp.gmail.com:587/"
+set imap_user = "nando@graphenedb.com"
+set imap_keepalive = 900
+set imap_check_subscribed
+set mail_check = 60
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set mbox="imaps://imap.gmail.com/[Gmail]/All Mail"
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+set move = no  #Stop asking to "move read messages to mbox"!
+set confirmappend = no
+set mark_old = no
+
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+
+bind editor <space> noop
+bind index G imap-fetch-mail
+
+macro index A "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all email as read"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index gt "<change-folder>=[Gmail]/Starred<enter>" "Go to starred"
+macro index gl <change-folder>? "Go to label"
+macro index S "<save-message>=[Gmail]/Spam<enter>" "mark as Spam"
+macro index \cb "|urlview\n"
+macro pager \cb "|urlview\n"
+
+set sort = 'threads'
+set sort_aux = reverse-last-date-received
+set markers=no # don't put '+' at the beginning of wrapped lines
+set pager_index_lines= 5 # how large is the index window?
+set editor='vim + -c "set textwidth=80" -c "set wrap" -c "set nocp" -c "?^$"'
+set charset = "utf-8"
+set record = ""
+set net_inc = 5
+set smart_wrap
+
+auto_view text/html text/calendar application/ics
+alternative_order text/plain text/enriched text/html
+
+set print_command='set -e; f=`mktemp -p ~/.cache/mutt`; muttprint -P A4 -p TO_FILE:"$f"; evince "$f"; rm "$f"'
+
+send-hook . set signature="~/.mutt/sig"
+
+source ~/.mutt/gpg.rc
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+

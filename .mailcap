@@ -1,0 +1,5 @@
+## text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; lynx -display_charset=%{charset} -dump %s; nametemplate=%s.html; copiousoutput;
+text/calendar; mutt-ics; copiousoutput
+application/ics; mutt-ics; copiousoutput
+
