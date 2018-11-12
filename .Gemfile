@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'irbtools'
+gem 'interactive_editor'
+gem 'awesome_print'
+gem 'aws-sdk'
+gem 'gist'
+gem 'rake'
+gem 'rdoc'
+gem 'pry'

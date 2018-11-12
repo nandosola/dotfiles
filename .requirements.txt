@@ -1,0 +1,6 @@
+virtualenv
+ansible
+awscli
+awslogs
+gcalcli
+mutt-ics
