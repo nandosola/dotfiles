@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/chromium-browser
+Exec=/usr/bin/chromium-browser --force-device-scale-factor=2 --high-dpi-support=1
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

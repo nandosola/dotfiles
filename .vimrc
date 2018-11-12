@@ -4,6 +4,8 @@
 " Environment {
   " Basics {
     set nocompatible    " must be first line
+    set directory=~/.vim/swapfiles//
+    set backupdir=~/.vim/backups//
     set encoding=utf-8
     scriptencoding utf-8
   " }
@@ -76,6 +78,7 @@
   set foldenable          " auto fold codedd
   set list
   set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+  set showtabline=2               " File tabs allways visible
 " }
 
 " Formatting {
@@ -121,6 +124,15 @@
 
   " For when you forget to sudo.. Really Write the file.
   cmap w!! w !sudo tee % >/dev/null
+
+  " Tab navigation
+  nmap <C-t> :tabnew<cr>
+  map <C-t> :tabnew<cr>
+  nmap <C-]> :tabnext<cr>
+  map <C-]> :tabnext<cr>
+  nmap <C-[> :tabprevious<cr>
+  map <C-[> :tabprevious<cr>
+  map <C-x> :tabclose<cr>
 " }
 
 " Plugins {

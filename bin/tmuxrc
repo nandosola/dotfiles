@@ -9,15 +9,15 @@ $tmux has-session -t devordie
 if [ $? != 0 ]; then
   $tmux start-server
   $tmux new-session -d -s devordie -n 'Playground'
-  $tmux split-window -h -t 'Playground' 'htop'
+  $tmux split-window -h -t 'Playground'
   $tmux selectp -t devordie:0.0
   $tmux splitw -v -p 50
   $tmux selectp -t devordie:0.2
   $tmux splitw -v -p 50
-  $tmux send-keys -t devordie:0.0 "cd $playground" C-m
+  $tmux send-keys -t devordie:0.0 "gcalcli calw --calendar GrapheneDB --calendar 'Vacations GDB' --calendar 'Holidays in Spain' --calendar 'On Call Schedule for Nando Sola'" C-m
+  $tmux send-keys -t devordie:0.1 "mutt" C-m
+  $tmux send-keys -t devordie:0.2 "htop" C-m
   $tmux send-keys -t devordie:0.3 "ovpn-gdb" C-m
-  $tmux send-keys -t devordie:0.1 "amm" C-m
-  $tmux send-keys -t devordie:0.0 "fortune -a" C-m
 
   $tmux new-window -t devordie:1 -n 'GDB'
   $tmux split-window -h -t 'GDB'

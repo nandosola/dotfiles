@@ -1,6 +1,7 @@
 # ruby 1.8.7 compatible
 require 'rubygems'
 require 'irb/completion'
+require 'irbtools'
 
 # interactive editor: use vim from within irb
 begin

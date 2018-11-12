@@ -117,12 +117,9 @@ fi
 # Nando's stuff
 export EDITOR=vim
 
-export OJDK9_HOME=/usr/lib/jvm/java-9-openjdk-amd64
-export OJDK8_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export ORCL8_HOME=/usr/lib/jvm/java-8-oracle
-export JAVA_HOME=$ORCL8_HOME
-export GOROOT=$HOME/tools/go
-export GOPATH=$HOME/.golibs
+export CHROMIUM_FLAGS="--force-device-scale-factor=2 --high-dpi-support=1"
+
+export NODE_HOME=$HOME/tools/node
 
 export CONSCRIPT_HOME="$HOME/.conscript"
 export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
@@ -132,25 +129,16 @@ export MAVEN_OPTS="-Xmx512m"
 
 export RACK_ENV=development
 
-export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/local/heroku/bin:$GOROOT/bin:$GOPATH/bin:$CONSCRIPT_HOME/bin:$PATH:"
-export MANPATH="$HOME/tools/lua-5.3/man:$HOME/tools/rust-1.11.0/share/man:$MANPATH"
+export GDB_ZK_HOSTS="10.100.1.98:2181,10.100.4.112:2181,10.100.3.113:2181"
 
-# Colorize Maven Output
-# Colors reference: http://en.wikipedia.org/wiki/ANSI_escape_code
-color_maven() {
-  $M2_HOME/bin/mvn $* | sed \
-    -e 's/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/^[[32;1mTests run: \1^[[0m, Failures: ^[[31;1m\2^[[0m, Errors: ^[[33;1m\3^[[0m, Skipped: ^[[34;1m\4^[[0m/g' \
-    -e 's/\(\[INFO\] \-[-]*$\)/^[[36;1m\1^[[0m/g' \
-    -e 's/\(\[INFO\] Building.*\)/^[[36;1m\1^[[0m/g' \
-    -e 's/\(.*INFO.*\)/^[[36;1m\1^[[0m/g' \
-    -e 's/\(.*WARN.*\)/^[[33;1m\1^[[0m/g' \
-    -e 's/\(.*ERROR.*\)/^[[31;1m\1^[[0m/g' \
-    -e 's/\(Downloaded:.*\)/^[[32;1m\1^[[0m/g'
-}
-alias mvn=color_maven
+export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/local/heroku/bin:$CONSCRIPT_HOME/bin:$HOME/.local/bin:$M2_HOME/bin:$NODE_HOME/bin:$PATH"
+export MANPATH="$NODE_HOME/share/man:$MANPATH"
 
 source ~/.bash-git-prompt/gitprompt.sh
 GIT_PROMPT_ONLY_IN_REPO=1
 
 eval "$(rbenv init -)"
-PATH="/home/nando/.conscript/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/nando/.sdkman"
+[[ -s "/home/nando/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nando/.sdkman/bin/sdkman-init.sh"
