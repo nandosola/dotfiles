@@ -4,3 +4,4 @@ awscli
 awslogs
 gcalcli
 mutt-ics
+urlscan

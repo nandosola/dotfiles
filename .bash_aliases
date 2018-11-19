@@ -72,6 +72,8 @@ alias dock_rmi_all="docker rmi \`docker images -q\`"
 alias dock_rmbad="docker images | awk '/^<none>/{print \$3}' | xargs docker rmi"
 
 alias dock_login_gdb="aws --profile gdb-us1 ecr get-login --region us-east-1"
+alias aws_regions="aws ec2 describe-regions --output text --query 'Regions[*].RegionName' | tr '\t' '\n' | sort"
+alias bfg="java -jar ~/bin/bfg-1.13.0.jar"
 
 alias meteo="curl -4 http://wttr.in/Malaga"
 alias icanhazip="curl -4 http://icanhazip.com"

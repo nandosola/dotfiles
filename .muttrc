@@ -9,6 +9,12 @@ set envelope_from = yes
 # Ensure TLS is enforced
 set ssl_starttls = yes
 set ssl_force_tls = yes
+set ssl_use_sslv3 = no
+set ssl_use_tlsv1 = no
+set ssl_use_tlsv1_1 = no
+set ssl_use_tlsv1_2 = yes
+set ssl_verify_dates = yes
+set ssl_verify_host = yes
 
 # Protocol: smtp for TLS (587), smtps for SSL (465)
 set smtp_url = "smtp://nando@graphenedb.com@smtp.gmail.com:587/"
@@ -19,21 +25,33 @@ set mail_check = 60
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set mbox="imaps://imap.gmail.com/[Gmail]/All Mail"
-set record = "+[Gmail]/Sent Mail"
+set record = "/dev/null"  #GMail does that automagically
 set postponed = "+[Gmail]/Drafts"
 set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
 set move = no  #Stop asking to "move read messages to mbox"!
 set confirmappend = no
 set mark_old = no
+set fast_reply
+unset metoo
+unset fcc_attach
+set fcc_clear
 
 set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
 
 bind editor <space> noop
+bind index g noop
 bind index G imap-fetch-mail
 
-macro index A "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all email as read"
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Cl sidebar-open
+
+macro index b '<enter-command>toggle sidebar_visible<enter>'
+macro pager b '<enter-command>toggle sidebar_visible<enter>'
+
+macro index \cA "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all email as read"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
@@ -41,18 +59,34 @@ macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 macro index gt "<change-folder>=[Gmail]/Starred<enter>" "Go to starred"
 macro index gl <change-folder>? "Go to label"
 macro index S "<save-message>=[Gmail]/Spam<enter>" "mark as Spam"
-macro index \cb "|urlview\n"
-macro pager \cb "|urlview\n"
+macro index A "<save-message>=[Gmail]/All Mail<enter>" "Archive"
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 set sort = 'threads'
+set hide_thread_subject = "no"
+set collapse_unread = "no"
 set sort_aux = reverse-last-date-received
 set markers=no # don't put '+' at the beginning of wrapped lines
-set pager_index_lines= 5 # how large is the index window?
+set pager_index_lines= 10 # how large is the index window?
 set editor='vim + -c "set textwidth=80" -c "set wrap" -c "set nocp" -c "?^$"'
 set charset = "utf-8"
 set record = ""
 set net_inc = 5
 set smart_wrap
+set sidebar_visible = "yes"
+set sidebar_width = 20
+set forward_format = "Fwd: %s"
+set indent_string = ">"
+set index_format = "%Z %{%Y %b %e  %H:%M} %?X?(%X)&   ? %-22.22F  %.100s %>"
+
+ignore *
+unignore from: date subject to cc
+unignore x-mailing-list: posted-to: list-unsubscribe:
+unignore x-mailer: user-agent:
+unignore openpgp: categories:
+hdr_order Date From To Cc #Sorting emails by the given criteria (from left to right))
 
 auto_view text/html text/calendar application/ics
 alternative_order text/plain text/enriched text/html
