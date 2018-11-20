@@ -95,6 +95,11 @@ set print_command='set -e; f=`mktemp -p ~/.cache/mutt`; muttprint -P A4 -p TO_FI
 
 send-hook . set signature="~/.mutt/sig"
 
+set alias_file = ~/.mutt/aliases
+set sort_alias = alias
+set reverse_alias = yes
+source ~/.mutt/aliases
+
 source ~/.mutt/gpg.rc
 source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
 
