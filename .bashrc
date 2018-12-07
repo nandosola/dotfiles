@@ -116,6 +116,7 @@ fi
 
 # Nando's stuff
 export EDITOR=vim
+ed() { command ed -p'=> ' "$@"; }
 
 export CHROMIUM_FLAGS="--force-device-scale-factor=2 --high-dpi-support=1"
 

@@ -15,6 +15,7 @@ set ssl_use_tlsv1_1 = no
 set ssl_use_tlsv1_2 = yes
 set ssl_verify_dates = yes
 set ssl_verify_host = yes
+set imap_authenticators="login"
 
 # Protocol: smtp for TLS (587), smtps for SSL (465)
 set smtp_url = "smtp://nando@graphenedb.com@smtp.gmail.com:587/"
@@ -63,6 +64,8 @@ macro index A "<save-message>=[Gmail]/All Mail<enter>" "Archive"
 
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+macro attach W "<save-entry><bol>~/Downloads/<eol>" "Save to desktop"
 
 set sort = 'threads'
 set hide_thread_subject = "no"
